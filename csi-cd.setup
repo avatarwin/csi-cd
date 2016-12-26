@@ -1,0 +1,7 @@
+(compile -s -O3 -d0 csi-cd.scm -J)
+(compile -s -O3 -d0 csi-cd.import.scm)
+
+(install-extension
+   'csi-cd
+   '("csi-cd.so" "csi-cd.import.so")
+   '((version 1.0.0)))

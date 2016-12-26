@@ -1,0 +1,8 @@
+;;;; csi-cd.meta -*- scheme -*-
+
+((synopsis "Add ability to change working directory to csi")
+ (category misc)
+ (license "BSD")
+ (author "Nicola Archibald")
+ (maintainer "Nicola Archibald <nicola.archibald@gmail.com>"
+ (files "csi-cd.scm" "csi-cd.meta" "csi-cd.setup"))
