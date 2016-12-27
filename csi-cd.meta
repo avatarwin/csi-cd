@@ -4,5 +4,5 @@
  (category misc)
  (license "BSD")
  (author "Nicola Archibald")
- (maintainer "Nicola Archibald <nicola.archibald@gmail.com>"
+ (maintainer "Nicola Archibald <nicola.archibald@gmail.com>")
  (files "csi-cd.scm" "csi-cd.meta" "csi-cd.setup"))
