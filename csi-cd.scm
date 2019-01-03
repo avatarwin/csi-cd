@@ -1,12 +1,12 @@
-(module csi-cd
-  ()
-  (import chicken scheme
-          (only csi toplevel-command))
+(module csi-cd ()
+	(import scheme
+		chicken.base
+		chicken.process-context
+		chicken.csi
+		chicken.io
+		srfi-13)
 
 
-  (use (only extras read-line)
-       (only srfi-13 string-trim-both)
-       (only posix change-directory current-directory))
 
 
   (define (cwd p)
@@ -17,17 +17,20 @@
 
   (define (trim string)
     (string-trim-both string))
-  
-(toplevel-command 'cd
-   (lambda ()
-     (let* [(rest (string-trim-both (read-line)))]
-       (cwd rest)
-       (print (gwd))))
-   ",cd DIRECTORY     Change working directory for csi")
 
-(toplevel-command 'pwd
-   (lambda ()
-     (print (gwd))
-     )
-   ",pwd              Display current working directory")
+  (define (cwd-toplevel-command)
+    (let* [(rest (string-trim-both (read-line)))]
+      (cwd rest)
+      (print (gwd))))
+
+  (define (pwd-toplevel-command)
+    (print (gwd)))
+    
+    (toplevel-command 'cd
+		      cwd-toplevel-command
+		      ",cd DIRECTORY     Change working directory for csi")
+    
+    (toplevel-command 'pwd
+		      pwd-toplevel-command
+		      ",pwd              Display current working directory")
 )
